@@ -18,13 +18,13 @@ public class Thor extends Hero {
         }
         if (!bossStunned) {
             boss.setDamage(50);
-            System.out.println("Босс не оглушен и нанес урон в этом раунде.");
+            System.out.println("Thor не оглушил босса и босс нанес урон в этом раунде.");
 
         } else {
             boss.setDamage(0);
 
 
-            System.out.println("Босс оглушен и не нанесет урон в следующем раунде.");
+            System.out.println("Thor оглушил босса и босс не нанесет урон в следующем раунде.");
             bossStunned = false;
         }
     }

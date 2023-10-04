@@ -9,12 +9,10 @@ public abstract class Hero extends GameEntity implements HavingSuperAbility{
         this.superAbility = superAbility;
         this.name = name;
     }
-    public SuperAbility getSuperAbility() {
-        return superAbility;
-    }
-
-    public void setSuperAbility(SuperAbility superAbility) {
-        this.superAbility = superAbility;
+    public void increaseHealth(int amount) {
+        if (amount > 0) {
+            setHealth(getHealth() + amount);
+        }
     }
 
     public String getName() {

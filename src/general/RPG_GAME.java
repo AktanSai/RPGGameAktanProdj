@@ -8,7 +8,7 @@ public class RPG_GAME {
     public static void start() {
         Boss boss = new Boss(3000, 50, "SkeletonKing");
 
-        Mage mage = new Mage(550, 25, "Mage");
+        Mage mage = new Mage(250, 25, "Mage");
         Golem golem = new Golem(500, 15, "Golem");
         Warrior warrior = new Warrior(250, 25, "Warrior");
         Medic medic = new Medic(110, 0, "Medic");
@@ -17,9 +17,12 @@ public class RPG_GAME {
         Witcher witcher = new Witcher(600, 0, "Witcher");
         Avrora avrora = new Avrora(300, 15, "Avrora");
         Druid druid = new Druid(300,10, "Druid");
+        Hacker hacker = new Hacker(350, 10, "Hacker");
+        TrickyBastard trickyBastard = new TrickyBastard(300, 10, "TrickyBastard");
+        Antman antman = new Antman(400, 15, "Antman");
 
 
-        Hero[] heroes = {mage, golem, warrior, medic, berserk, thor, witcher, avrora, druid};
+        Hero[] heroes = {mage, golem, warrior, medic, berserk, thor, witcher, avrora, druid, hacker, trickyBastard, antman};
         printStatistics(boss, heroes);
 
         while (!isGameOver(boss, heroes)) {
@@ -38,7 +41,6 @@ public class RPG_GAME {
         for (int i = 0; i < heroes.length; i++) {
             if (heroes[i].getHealth() > 0) {
                 allHeroesDead = false;
-                break;
             }
             if (allHeroesDead) {
                 System.out.println("Boss WIN!!!");
@@ -78,11 +80,8 @@ public class RPG_GAME {
                 if (heroes[i].getHealth() > 0) {
                 heroes[i].setHealth(heroes[i].getHealth() - boss.getDamage());
             }
+            }
         }
-        if(boss.getHealth() < 0){
-            boss.setHealth(0);
-        }
-    }
 
     private static void heroesHits(Boss boss, Hero[] heroes) {
         for (int i = 0; i < heroes.length; i++) {
@@ -92,6 +91,9 @@ public class RPG_GAME {
             }
             if(heroes[i].getHealth() <0){
                 heroes[i].setHealth(0);
+            }
+            if(boss.getHealth() < 0){
+                boss.setHealth(0);
             }
         }
     }

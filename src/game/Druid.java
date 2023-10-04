@@ -29,7 +29,6 @@ public class Druid extends Hero{
     }
     private void summonRavenAssistant(Hero[] heroes) {
         RavenAssistant ravenAssistant = new RavenAssistant(40, 0,"Ворон");
-        ravenAssistant.setMedicBoost(assistantBoost);
         System.out.println("Друид призывает помощника \"Ворон\".");
         for (Hero hero : heroes) {
             if (hero instanceof Medic) {
@@ -91,6 +90,24 @@ public class Druid extends Hero{
             clonedHero = new Avrora(originalHero.getHealth(), originalHero.getDamage(), originalHero.getName() + " Clone");
 
             System.out.println("Друид создает копию Avrora: " + clonedHero.getName());
+
+        }else if (ally instanceof Hacker) {
+            Hacker originalHero = (Hacker) ally;
+            clonedHero = new Hacker(originalHero.getHealth(), originalHero.getDamage(), originalHero.getName() + " Clone");
+
+            System.out.println("Друид создает копию Hacker: " + clonedHero.getName());
+
+        }else if (ally instanceof TrickyBastard) {
+            TrickyBastard originalHero = (TrickyBastard) ally;
+            clonedHero = new TrickyBastard(originalHero.getHealth(), originalHero.getDamage(), originalHero.getName() + " Clone");
+
+            System.out.println("Друид создает копию TrickyBastard: " + clonedHero.getName());
+
+        }else if (ally instanceof Antman) {
+            Antman originalHero = (Antman) ally;
+            clonedHero = new Antman(originalHero.getHealth(), originalHero.getDamage(), originalHero.getName() + " Clone");
+
+            System.out.println("Друид создает копию Antman: " + clonedHero.getName());
 
         }
         return clonedHero;
