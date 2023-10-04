@@ -5,7 +5,7 @@ public abstract class Hero extends GameEntity implements HavingSuperAbility{
     private String name;
 
     public Hero(int health, int damage, SuperAbility superAbility, String name) {
-        super(health, damage);
+        super(health, damage, name);
         this.superAbility = superAbility;
         this.name = name;
     }

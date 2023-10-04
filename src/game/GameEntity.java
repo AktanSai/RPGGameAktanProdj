@@ -3,13 +3,12 @@ package game;
 public abstract class GameEntity {
     private int health;
     private int damage;
+    private String name;
 
-    public GameEntity(int health, int damage) {
+    public GameEntity(int health, int damage, String name) {
         this.health = health;
         this.damage = damage;
-    }
-    public boolean isAlive() {
-        return health > 0;
+        this.name = name;
     }
 
     public int getHealth() {
@@ -26,5 +25,13 @@ public abstract class GameEntity {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -6,7 +6,7 @@ public class RPG_GAME {
     private static int round = 0;
 
     public static void start() {
-        Boss boss = new Boss(2000, 50);
+        Boss boss = new Boss(3000, 50, "SkeletonKing");
 
         Mage mage = new Mage(550, 25, "Mage");
         Golem golem = new Golem(500, 15, "Golem");
@@ -16,9 +16,10 @@ public class RPG_GAME {
         Thor thor = new Thor(300, 20, "Thor");
         Witcher witcher = new Witcher(600, 0, "Witcher");
         Avrora avrora = new Avrora(300, 15, "Avrora");
+        Druid druid = new Druid(300,10, "Druid");
 
 
-        Hero[] heroes = {mage, golem, warrior, medic, berserk, thor, witcher, avrora};
+        Hero[] heroes = {mage, golem, warrior, medic, berserk, thor, witcher, avrora, druid};
         printStatistics(boss, heroes);
 
         while (!isGameOver(boss, heroes)) {
@@ -57,19 +58,24 @@ public class RPG_GAME {
 
     private static void round(Boss boss, Hero[] heroes) {
         System.out.println("ROUND - " + round);
+        for (Hero hero : heroes) {
+            if (hero instanceof Avrora) {
+                Avrora avrora = (Avrora) hero;
+                avrora.endRound(); // Вызываем метод endRound() для Avrora
+            }
+        }
         if (boss.getHealth() > 0) {
             bossHits(boss, heroes);
         }
-        heroesHits(boss, heroes);
-//        for (Hero hero : heroes) {
-//            hero.apllySuperAbility(boss, heroes);
-//        }
-        printStatistics(boss, heroes);
-    }
+            heroesHits(boss, heroes);
+            printStatistics(boss, heroes);
 
-    private static void bossHits(Boss boss, Hero[] heroes) {
-        for (int i = 0; i < heroes.length; i++) {
-            if (heroes[i].getHealth() > 0) {
+        }
+
+
+        private static void bossHits(Boss boss, Hero[] heroes) {
+            for (int i = 0; i < heroes.length; i++) {
+                if (heroes[i].getHealth() > 0) {
                 heroes[i].setHealth(heroes[i].getHealth() - boss.getDamage());
             }
         }
@@ -89,19 +95,4 @@ public class RPG_GAME {
             }
         }
     }
-
-    public static void isAllAlive(Boss boss, Hero[] heroes) {
-        for (int i = 0; i <heroes.length; i++) {
-
-        while (
-        (boss.isAlive() && (heroes[i].isAlive() || heroes[i].isAlive()))) {
-            if (heroes[i].isAlive()) {
-                heroesHits(boss, heroes);
-            }
-            if (boss.isAlive()) {
-                bossHits(boss, heroes);
-            }
-        }
-    }
-}
 }
