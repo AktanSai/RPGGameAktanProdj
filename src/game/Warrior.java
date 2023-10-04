@@ -14,7 +14,7 @@ public class Warrior extends Hero{
             Random random = new Random();
             int coef = random.nextInt(3) + 2;
             boss.setHealth(boss.getHealth() - this.getDamage() * coef);
-            System.out.println(this.getName() + " his critically " + coef * this.getDamage());
+            System.out.println(this.getName() + " НАНОСИТ КРИТИЧЕСКИЙ УРОН " + coef * this.getDamage());
         }
     }
 }

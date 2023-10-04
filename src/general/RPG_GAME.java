@@ -8,13 +8,17 @@ public class RPG_GAME {
     public static void start() {
         Boss boss = new Boss(2000, 50);
 
-        Mage mage = new Mage(250, 25, "Mage");
-        Golem golem = new Golem(400, 15, "Golem");
+        Mage mage = new Mage(550, 25, "Mage");
+        Golem golem = new Golem(500, 15, "Golem");
         Warrior warrior = new Warrior(250, 25, "Warrior");
-        Medic medic = new Medic(300, 0, "Medic");
-        Berserk berserk = new Berserk(250, 20, "Berserk");
+        Medic medic = new Medic(110, 0, "Medic");
+        Berserk berserk = new Berserk(210, 20, "Berserk");
+        Thor thor = new Thor(300, 20, "Thor");
+        Witcher witcher = new Witcher(600, 0, "Witcher");
+        Avrora avrora = new Avrora(300, 15, "Avrora");
 
-        Hero[] heroes = {mage, golem, warrior, medic, berserk};
+
+        Hero[] heroes = {mage, golem, warrior, medic, berserk, thor, witcher, avrora};
         printStatistics(boss, heroes);
 
         while (!isGameOver(boss, heroes)) {
@@ -57,9 +61,9 @@ public class RPG_GAME {
             bossHits(boss, heroes);
         }
         heroesHits(boss, heroes);
-        for (Hero hero : heroes) {
-            hero.apllySuperAbility(boss, heroes);
-        }
+//        for (Hero hero : heroes) {
+//            hero.apllySuperAbility(boss, heroes);
+//        }
         printStatistics(boss, heroes);
     }
 
@@ -78,6 +82,7 @@ public class RPG_GAME {
         for (int i = 0; i < heroes.length; i++) {
             if (boss.getHealth() > 0 && heroes[i].getHealth() > 0) {
                 boss.setHealth(boss.getHealth() - heroes[i].getDamage());
+                heroes[i].apllySuperAbility(boss,heroes);
             }
             if(heroes[i].getHealth() <0){
                 heroes[i].setHealth(0);

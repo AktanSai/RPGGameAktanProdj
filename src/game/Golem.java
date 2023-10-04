@@ -3,7 +3,7 @@ package game;
 public class Golem extends Hero {
 
     public Golem(int health, int damage, String name) {
-        super(health, damage, SuperAbility.Stun, name);
+        super(health, damage, SuperAbility.DAMAGEOFBOSSTOBOSS, name);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Golem extends Hero {
 
             }
             for (int i = 0; i < hero.length; i++) {
-                if (hero[i] != this) {
+                if (hero[i] != this && hero[i].getHealth() > 0) {
                     hero[i].setHealth(boss.getDamage() / 5 + hero[i].getHealth());
                 }
             }
